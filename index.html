@@ -243,15 +243,42 @@
     </footer>
   </div>
 <script>
-// Send height to parent for auto-resize
-function sendHeight() {
-  if (window.parent) {
-    window.parent.postMessage({
-      height: document.querySelector('.ep-daily-embed').scrollHeight
-    }, '*');
+(function () {
+  // Notify the parent iframe wrapper of our current content height.
+  // Message format: { type: 'newsletter-resize', height: <number> }
+  // The parent (embed.html) listens for this message and resizes the iframe
+  // so no content is clipped and no inner scrollbars appear.
+  function sendHeight() {
+    if (window.parent === window) return; // not embedded, nothing to do
+    var container = document.querySelector('.ep-daily-embed');
+    if (!container) return;
+    var h = container.scrollHeight;
+    window.parent.postMessage({ type: 'newsletter-resize', height: h }, '*');
   }
-}
-window.addEventListener('load', sendHeight);
-window.addEventListener('resize', sendHeight);
+
+  // Throttle: fire at most once every 150 ms during rapid resize events
+  var throttleTimer = null;
+  function sendHeightThrottled() {
+    if (throttleTimer) return;
+    throttleTimer = setTimeout(function () {
+      throttleTimer = null;
+      sendHeight();
+    }, 150);
+  }
+
+  // Send on initial load (content fully rendered)
+  window.addEventListener('load', sendHeight);
+
+  // Send on resize (e.g. orientation change, window resize on desktop)
+  window.addEventListener('resize', sendHeightThrottled);
+
+  // Send when any image in the newsletter finishes loading, because images
+  // can change the layout height after the initial load event fires.
+  document.querySelectorAll('img').forEach(function (img) {
+    if (!img.complete) {
+      img.addEventListener('load', sendHeightThrottled);
+    }
+  });
+})();
 </script>
 </div>
