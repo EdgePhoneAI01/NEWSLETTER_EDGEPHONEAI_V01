@@ -242,4 +242,16 @@
       <p>Automated curation for promotional use. Headlines link to third-party publishers; EdgePhone is not affiliated unless stated. Built to highlight <a href="https://www.edgephone.ai/" target="_blank" rel="noopener noreferrer">EdgePhone</a> and the shift toward on-device, low-latency AI.</p>
     </footer>
   </div>
+<script>
+// Send height to parent for auto-resize
+function sendHeight() {
+  if (window.parent) {
+    window.parent.postMessage({
+      height: document.querySelector('.ep-daily-embed').scrollHeight
+    }, '*');
+  }
+}
+window.addEventListener('load', sendHeight);
+window.addEventListener('resize', sendHeight);
+</script>
 </div>
