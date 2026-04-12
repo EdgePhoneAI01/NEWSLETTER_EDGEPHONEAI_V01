@@ -228,16 +228,10 @@
       display: block;
     }
 
-    .featured-visual .fallback {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: rgba(255, 255, 255, 0.08);
-      letter-spacing: -0.05em;
+    .featured-visual img[src*="google.com/s2/favicons"] {
+      object-fit: contain;
+      padding: clamp(1.25rem, 8%, 2.5rem);
+      background: linear-gradient(145deg, var(--surface-2), #0e141c);
     }
 
     .featured-body {
@@ -377,28 +371,29 @@
       </div>
     </header>
 
-    <h2 class="section-title">Featured today</h2>
+                            <h2 class="section-title">Featured today</h2>
     <div class="featured-grid">
       <article class="featured-card">
         <span class="featured-banner">Featured</span>
         <div class="featured-visual">
-          <img src="https://picsum.photos/seed/edgephone1/640/360" alt="" loading="lazy" width="640" height="360" />
+          <img src="https://www.google.com/s2/favicons?sz=256&amp;domain=www.travelandtourworld.com" alt="" loading="lazy" width="640" height="360" />
         </div>
         <div class="featured-body">
-          <h3><a href="https://example.com/edge-ai-latency" target="_blank" rel="noopener noreferrer">Phone-first AI slashes latency with on-device inference for assistants</a></h3>
-          <p>Hardware makers highlight local inference and zero round-trip designs that keep voice and vision on the handset—reducing jitter and improving privacy-by-default behavior.</p>
-          <a class="read-link" href="https://example.com/edge-ai-latency" target="_blank" rel="noopener noreferrer">Read article →</a>
+          <h3><a href="https://news.google.com/rss/articles/CBMivwJBVV95cUxPeE1JTG9lOEpESlBOeW1yQTFqbjgwMWxiaGxkWURSNDhOQ3YwbFlJRHRPOEVYWFhzWEFIRjVZUGd0MTBqeE9MZGlsZDRqRVY2VGswQTRPVmZsYWtraHVVWVNtTGkyVHBMN08xRjF5Wk9HOTYtUHI2MlFZZjN6ZWE2ZmN5TFV1b1NBYk9ORzR3bzVFcE9IMjlEMGxVOVhsVmwyQ21BMUhPVkJhM0c0aHB2d0VaMWFoWHNzWElLOXpwVGJZODFnaXhBd19OZklfNk1ZSUl6OUJ1a1Zfcm1XanIxMUFaZ1NCSkkxaGJBOWJUbnFjWkNyaVlQZFJfZ3IwSHdSRmNjNUxkaWxSTmNQLVNWNHktbEt6ZU5YZk9xeDBjMzM5REEydC1jNHJ1MTg2ZzVlMlE0eldiVmFJN2sydmxN?oc=5" target="_blank" rel="noopener noreferrer">MGJE 2026 In Malaysia Set To Transform The Gold And Jewellery Sector With Cutting-Edge AI Innovations And the Launch Of A Pioneering Southeast Asia Gold Trading Platform - Travel And Tour World</a></h3>
+          <p>MGJE 2026 In Malaysia Set To Transform The Gold And Jewellery Sector With Cutting-Edge AI Innovations And the Launch Of A Pioneering Southeast Asia Gold Trading Platform Travel And Tour World</p>
+          <a class="read-link" href="https://news.google.com/rss/articles/CBMivwJBVV95cUxPeE1JTG9lOEpESlBOeW1yQTFqbjgwMWxiaGxkWURSNDhOQ3YwbFlJRHRPOEVYWFhzWEFIRjVZUGd0MTBqeE9MZGlsZDRqRVY2VGswQTRPVmZsYWtraHVVWVNtTGkyVHBMN08xRjF5Wk9HOTYtUHI2MlFZZjN6ZWE2ZmN5TFV1b1NBYk9ORzR3bzVFcE9IMjlEMGxVOVhsVmwyQ21BMUhPVkJhM0c0aHB2d0VaMWFoWHNzWElLOXpwVGJZODFnaXhBd19OZklfNk1ZSUl6OUJ1a1Zfcm1XanIxMUFaZ1NCSkkxaGJBOWJUbnFjWkNyaVlQZFJfZ3IwSHdSRmNjNUxkaWxSTmNQLVNWNHktbEt6ZU5YZk9xeDBjMzM5REEydC1jNHJ1MTg2ZzVlMlE0eldiVmFJN2sydmxN?oc=5" target="_blank" rel="noopener noreferrer">Read article →</a>
         </div>
       </article>
+
       <article class="featured-card">
         <span class="featured-banner">Featured</span>
         <div class="featured-visual">
-          <img src="https://picsum.photos/seed/edgephone2/640/360" alt="" loading="lazy" width="640" height="360" />
+          <img src="https://www.google.com/s2/favicons?sz=256&amp;domain=biz.chosun.com" alt="" loading="lazy" width="640" height="360" />
         </div>
         <div class="featured-body">
-          <h3><a href="https://example.com/edge-ml-battery" target="_blank" rel="noopener noreferrer">Edge ML shifts toward battery-efficient models on mobile SoCs</a></h3>
-          <p>New toolchains target lightweight networks, structured pruning, and INT8 quantization so sensor fusion and on-device computer vision stay within thermal budgets.</p>
-          <a class="read-link" href="https://example.com/edge-ml-battery" target="_blank" rel="noopener noreferrer">Read article →</a>
+          <h3><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTFBOZGpkUDdUa1ZfUWR0U29sanJVOEtHZEpjbks1VkE1SGwtQ3JIMXY1aDJhOGduWmliSnVNclhfaEIzMXEzZzM5YUx4QlVtZVNESktQMDVfbWR6MUdyQXVRSEptcTJLMHlZd3gwTHFmZWkxNmdZcE5tSEln0gGOAUFVX3lxTFAxUVQ4WXMwLW5ieXFNNmotQTZuWjc3TXZOcVJpSHMwc3JVN29Fa0lweWdPbXUwTVJRbHBmWHJSQm5nWmM1WUN2R1dUU0EzVEwwc2Z5Ri1UVlZ1eUpybmFYWmx6czNvNG9oMTkyVkNmWmtSZ1Vzd0RNWDFSS19TYzBDV2J3QjBWX0lidjlHaEE?oc=5" target="_blank" rel="noopener noreferrer">Counterpoint forecasts physical AI surge to 145 million devices by 2035 - CHOSUNBIZ - Chosunbiz</a></h3>
+          <p>Counterpoint forecasts physical AI surge to 145 million devices by 2035 - CHOSUNBIZ Chosunbiz</p>
+          <a class="read-link" href="https://news.google.com/rss/articles/CBMiekFVX3lxTFBOZGpkUDdUa1ZfUWR0U29sanJVOEtHZEpjbks1VkE1SGwtQ3JIMXY1aDJhOGduWmliSnVNclhfaEIzMXEzZzM5YUx4QlVtZVNESktQMDVfbWR6MUdyQXVRSEptcTJLMHlZd3gwTHFmZWkxNmdZcE5tSEln0gGOAUFVX3lxTFAxUVQ4WXMwLW5ieXFNNmotQTZuWjc3TXZOcVJpSHMwc3JVN29Fa0lweWdPbXUwTVJRbHBmWHJSQm5nWmM1WUN2R1dUU0EzVEwwc2Z5Ri1UVlZ1eUpybmFYWmx6czNvNG9oMTkyVkNmWmtSZ1Vzd0RNWDFSS19TYzBDV2J3QjBWX0lidjlHaEE?oc=5" target="_blank" rel="noopener noreferrer">Read article →</a>
         </div>
       </article>
     </div>
@@ -408,65 +403,72 @@
       <li>
         <span class="rank">3</span>
         <div class="item-main">
-          <h4><a href="https://example.com/offline-voice" target="_blank" rel="noopener noreferrer">Offline voice processing gains traction where connectivity is sparse</a></h4>
-          <p>Packaged models and secure mobile AI stacks let field teams run dictation and commands without cloud round-trips.</p>
-          <div class="item-meta"><a href="https://example.com/offline-voice" target="_blank" rel="noopener noreferrer">Read article</a></div>
+          <h4><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQcEtVVHBwdlQyTnhTbUQ1OEFXU2FvaWhmS0lPNWNzWm03UTZEdmRiVnczRnYwdHhDdEM5dFhpb1RwRzNOZ3d3QzJPQUNWamRIVW1WdHN3QlVWbGNKQXFscW56MnEwMjJIUGJvWEVJcHlzNW82eC1hQzZmUUg1M3ZXWS15Nnc?oc=5" target="_blank" rel="noopener noreferrer">Google Introduces New Offline AI Dictation App - Brand Communicator</a></h4>
+          <p>Google Introduces New Offline AI Dictation App Brand Communicator</p>
+          <div class="item-meta"><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQcEtVVHBwdlQyTnhTbUQ1OEFXU2FvaWhmS0lPNWNzWm03UTZEdmRiVnczRnYwdHhDdEM5dFhpb1RwRzNOZ3d3QzJPQUNWamRIVW1WdHN3QlVWbGNKQXFscW56MnEwMjJIUGJvWEVJcHlzNW82eC1hQzZmUUg1M3ZXWS15Nnc?oc=5" target="_blank" rel="noopener noreferrer">Read article</a></div>
         </div>
       </li>
+
       <li>
         <span class="rank">4</span>
         <div class="item-main">
-          <h4><a href="https://example.com/data-minimization" target="_blank" rel="noopener noreferrer">Data minimization AI: what ships off-device—and what never leaves the phone</a></h4>
-          <p>Product teams adopt selective upload policies paired with on-device embeddings to meet tightening privacy expectations.</p>
-          <div class="item-meta"><a href="https://example.com/data-minimization" target="_blank" rel="noopener noreferrer">Read article</a></div>
+          <h4><a href="https://news.google.com/rss/articles/CBMiUEFVX3lxTE10N0txYWp4NXo1THQ4RWtqYzJTZklQQnpVMTQ0cGNXa3ZMb0d0TVNZbFdDcjRYZkxLdW5ZMHNJOUhVQktubWNjY0dxdU9WTWN0?oc=5" target="_blank" rel="noopener noreferrer">AI juggernaut rumbles on even as markets whipsaw - The Edge Malaysia</a></h4>
+          <p>AI juggernaut rumbles on even as markets whipsaw The Edge Malaysia</p>
+          <div class="item-meta"><a href="https://news.google.com/rss/articles/CBMiUEFVX3lxTE10N0txYWp4NXo1THQ4RWtqYzJTZklQQnpVMTQ0cGNXa3ZMb0d0TVNZbFdDcjRYZkxLdW5ZMHNJOUhVQktubWNjY0dxdU9WTWN0?oc=5" target="_blank" rel="noopener noreferrer">Read article</a></div>
         </div>
       </li>
+
       <li>
         <span class="rank">5</span>
         <div class="item-main">
-          <h4><a href="https://example.com/mobile-apis" target="_blank" rel="noopener noreferrer">Mobile AI APIs mature for edge computing on IoT gateways</a></h4>
-          <p>Vendors document pipelines from phone to gateway, emphasizing local inference for cameras and industrial sensors.</p>
-          <div class="item-meta"><a href="https://example.com/mobile-apis" target="_blank" rel="noopener noreferrer">Read article</a></div>
+          <h4><a href="https://news.google.com/rss/articles/CBMinAJBVV95cUxNenRRM0J5LVlnWi1LSWthalNnSFFfV29MZXVXWjZkdTFiY3YtUlROWW9yaWZONmc1LUVnTVFXRlNUVXpyQm04RElMR3JLYUJBUGhCcjZlZlFLaTFsbE5LYzZaVTYzcVBPWDhoaVUyV0VjNXlFR2kzWmI0ZV9uWVpscW1wdWdmVUMtQkhQVHA1X2xLMFZMRkplYlJZM2taSmpKcy02RnN6VTNXOWdHa01kU0k5MFo2WUotTU9QNHZlbURjVG5tUEdWaHJqY0wzNlJKWFgxeHlZenNCTlhwSjBXSE1uWG9Nc0kwTXZSN2cwWjlER2xrMmhRekE5aUJCbVNSWjFYTjdFRDRxdlgxLUQ3cXpEV3hrQjYtNHVOadIBogJBVV95cUxQa1hoRnRFTGxmODJRZW56a2gyQlNYcFVRTVFDem12Q2FRY3BXWDJXQ1R3ZHZQOGxTRDJKT25JcTBzNkdpMTEySlNqVDVDY1NNeDlhbUdGSkRXcDExemZpTGYwM01Rak05U3lvMVdsSEV5X2hTVndNd3dwQ2dOTlpjNXc5NkFvVjk2RXhOSGs0RDl6ZTcxQjBkRHNpQWpmSl9SUlNaVlR4RGNGNUFLVzdKUkhoSXhSdFhrZDdWS3RxYnNNS3NVZS1TNm9yVGNaNEF0VWd0Zi1LMnVMQzA3UzRsd2RGcTE4VUFxenpjcWxmSVJselE4dVVWbE5lVVVnR01EWk15QnpIOFRMbFFvcnY5TU9jem40aVJQMDBQUDlyUFNoQQ?oc=5" target="_blank" rel="noopener noreferrer">Liquid AI Releases LFM2.5-VL-450M: a 450M-Parameter Vision-Language Model with Bounding Box Prediction, Multilingual Support, and Sub-250ms Edge Inference - MarkTechPost</a></h4>
+          <p>Liquid AI Releases LFM2.5-VL-450M: a 450M-Parameter Vision-Language Model with Bounding Box Prediction, Multilingual Support, and Sub-250ms Edge Inference MarkTechPost</p>
+          <div class="item-meta"><a href="https://news.google.com/rss/articles/CBMinAJBVV95cUxNenRRM0J5LVlnWi1LSWthalNnSFFfV29MZXVXWjZkdTFiY3YtUlROWW9yaWZONmc1LUVnTVFXRlNUVXpyQm04RElMR3JLYUJBUGhCcjZlZlFLaTFsbE5LYzZaVTYzcVBPWDhoaVUyV0VjNXlFR2kzWmI0ZV9uWVpscW1wdWdmVUMtQkhQVHA1X2xLMFZMRkplYlJZM2taSmpKcy02RnN6VTNXOWdHa01kU0k5MFo2WUotTU9QNHZlbURjVG5tUEdWaHJqY0wzNlJKWFgxeHlZenNCTlhwSjBXSE1uWG9Nc0kwTXZSN2cwWjlER2xrMmhRekE5aUJCbVNSWjFYTjdFRDRxdlgxLUQ3cXpEV3hrQjYtNHVOadIBogJBVV95cUxQa1hoRnRFTGxmODJRZW56a2gyQlNYcFVRTVFDem12Q2FRY3BXWDJXQ1R3ZHZQOGxTRDJKT25JcTBzNkdpMTEySlNqVDVDY1NNeDlhbUdGSkRXcDExemZpTGYwM01Rak05U3lvMVdsSEV5X2hTVndNd3dwQ2dOTlpjNXc5NkFvVjk2RXhOSGs0RDl6ZTcxQjBkRHNpQWpmSl9SUlNaVlR4RGNGNUFLVzdKUkhoSXhSdFhrZDdWS3RxYnNNS3NVZS1TNm9yVGNaNEF0VWd0Zi1LMnVMQzA3UzRsd2RGcTE4VUFxenpjcWxmSVJselE4dVVWbE5lVVVnR01EWk15QnpIOFRMbFFvcnY5TU9jem40aVJQMDBQUDlyUFNoQQ?oc=5" target="_blank" rel="noopener noreferrer">Read article</a></div>
         </div>
       </li>
+
       <li>
         <span class="rank">6</span>
         <div class="item-main">
-          <h4><a href="https://example.com/onnx-mobile" target="_blank" rel="noopener noreferrer">Cross-platform runtimes speed deployment of lightweight models</a></h4>
-          <p>Engineers report faster iteration when the same ONNX graph targets phone NPUs and embedded accelerators alike.</p>
-          <div class="item-meta"><a href="https://example.com/onnx-mobile" target="_blank" rel="noopener noreferrer">Read article</a></div>
+          <h4><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNVGRuMElLQTdaVmt0N3V2Q2V6TEF4NHM2M213VC11VFpoeUplR2RyRFJRNlFJTHhqbld0RF9jT1c2QUVzdXZDYUtTS2ZBQl9KUnZaQ0R6c1F1b1pGWkhNdXhhWkp6X0JXS2ppazZYbGtwWkpsNWhXb2hTMGFzaGdIX2dzSHliTzh2a0tibzhVQXhOejdIUkZHSVJVUkh2b0ljdGNWa2lSdksxUFYyN19CWWVIZHVFLXZoOGg0R19qNTRBejNGa3RIZUVZTU7SAdIBQVVfeXFMT2pXZ2liUGJQWW1pQmJiX2hfdjlndmVZSEM3aHVKWWpSeEZvU01FQ0xxY2RfT1lmYkN0UEhoTFJjVWdfUUdCOUdsdG40WjdveVZKRVRtUmZfang2cXVRcGtTMklvVXFJekkzeUtCWFl2OUZBWlJfSjdhdFpOdHJOVXU5bTZRRkphTkpWLXlCZTFyX3NpS3FqSnBqX3c4LWlOVVdwbUJhZF9FYnJabHVEdUE1SElDUjVfTk1RSW1DOUtVN21nVGVaQWx0YzlST1BxMFZR?oc=5" target="_blank" rel="noopener noreferrer">Is Zebra Technologies (ZBRA) Quietly Redefining Its Edge With AI-Powered Healthcare Workflows? - simplywall.st</a></h4>
+          <p>Is Zebra Technologies (ZBRA) Quietly Redefining Its Edge With AI-Powered Healthcare Workflows? simplywall.st</p>
+          <div class="item-meta"><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNVGRuMElLQTdaVmt0N3V2Q2V6TEF4NHM2M213VC11VFpoeUplR2RyRFJRNlFJTHhqbld0RF9jT1c2QUVzdXZDYUtTS2ZBQl9KUnZaQ0R6c1F1b1pGWkhNdXhhWkp6X0JXS2ppazZYbGtwWkpsNWhXb2hTMGFzaGdIX2dzSHliTzh2a0tibzhVQXhOejdIUkZHSVJVUkh2b0ljdGNWa2lSdksxUFYyN19CWWVIZHVFLXZoOGg0R19qNTRBejNGa3RIZUVZTU7SAdIBQVVfeXFMT2pXZ2liUGJQWW1pQmJiX2hfdjlndmVZSEM3aHVKWWpSeEZvU01FQ0xxY2RfT1lmYkN0UEhoTFJjVWdfUUdCOUdsdG40WjdveVZKRVRtUmZfang2cXVRcGtTMklvVXFJekkzeUtCWFl2OUZBWlJfSjdhdFpOdHJOVXU5bTZRRkphTkpWLXlCZTFyX3NpS3FqSnBqX3c4LWlOVVdwbUJhZF9FYnJabHVEdUE1SElDUjVfTk1RSW1DOUtVN21nVGVaQWx0YzlST1BxMFZR?oc=5" target="_blank" rel="noopener noreferrer">Read article</a></div>
         </div>
       </li>
+
       <li>
         <span class="rank">7</span>
         <div class="item-main">
-          <h4><a href="https://example.com/secure-edge" target="_blank" rel="noopener noreferrer">Secure mobile AI: trusted execution and key isolation for on-device models</a></h4>
-          <p>Updated guidance covers model encryption at rest, attestation, and side-channel hardening for consumer devices.</p>
-          <div class="item-meta"><a href="https://example.com/secure-edge" target="_blank" rel="noopener noreferrer">Read article</a></div>
+          <h4><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQbmhBbUhGMThrYldYREJuQ2hvUjJRM3F3eUozQ1pjX3BzMF90T2RrSlNqM0RqUWplVlpMQlpoVFkxdTRmVkdlM0daTjVXTG9ad0MtR2h2aUhGUWFiVHRFdWpuVVR4VjZlaWRPYlNmNnk0NjhlODhhZHA2Mm1pTS11MHU1NXdNZ0NGMFQxUzlqcVpUUjFKdXpmd1ljb0NBRU9kcWc?oc=5" target="_blank" rel="noopener noreferrer">An Engineering Roadmap Toward Completely Neural Computers (Meta AI, KAUST) - Semiconductor Engineering</a></h4>
+          <p>An Engineering Roadmap Toward Completely Neural Computers (Meta AI, KAUST) Semiconductor Engineering</p>
+          <div class="item-meta"><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQbmhBbUhGMThrYldYREJuQ2hvUjJRM3F3eUozQ1pjX3BzMF90T2RrSlNqM0RqUWplVlpMQlpoVFkxdTRmVkdlM0daTjVXTG9ad0MtR2h2aUhGUWFiVHRFdWpuVVR4VjZlaWRPYlNmNnk0NjhlODhhZHA2Mm1pTS11MHU1NXdNZ0NGMFQxUzlqcVpUUjFKdXpmd1ljb0NBRU9kcWc?oc=5" target="_blank" rel="noopener noreferrer">Read article</a></div>
         </div>
       </li>
+
       <li>
         <span class="rank">8</span>
         <div class="item-main">
-          <h4><a href="https://example.com/sensor-fusion" target="_blank" rel="noopener noreferrer">Sensor fusion at the edge: pairing IMU, mic, and camera on low power</a></h4>
-          <p>Researchers demonstrate cooperative filtering that keeps most fusion local while syncing sparse summaries upstream.</p>
-          <div class="item-meta"><a href="https://example.com/sensor-fusion" target="_blank" rel="noopener noreferrer">Read article</a></div>
+          <h4><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTFA0UXl3Z3J1bkM2MkFSY3VtT2ZvRXQ0bzNRbXplNm1qdTM4N3FMUVBYN3p0YXNvSGJpWktxd09NWk1tdUh3VGxhTW50aHMtWHVRRV9F?oc=5" target="_blank" rel="noopener noreferrer">[Korean Startup Weekly News #113] Mobilint Raises $46.4M Series C, Bets Big on Edge AI - Wowtale</a></h4>
+          <p>[Korean Startup Weekly News #113] Mobilint Raises $46.4M Series C, Bets Big on Edge AI Wowtale</p>
+          <div class="item-meta"><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTFA0UXl3Z3J1bkM2MkFSY3VtT2ZvRXQ0bzNRbXplNm1qdTM4N3FMUVBYN3p0YXNvSGJpWktxd09NWk1tdUh3VGxhTW50aHMtWHVRRV9F?oc=5" target="_blank" rel="noopener noreferrer">Read article</a></div>
         </div>
       </li>
+
       <li>
         <span class="rank">9</span>
         <div class="item-main">
-          <h4><a href="https://example.com/zero-latency" target="_blank" rel="noopener noreferrer">“Zero-latency” UX patterns rely on predictive prefetch—not magic</a></h4>
-          <p>Design notes explain how on-device caches and speculative inference hide network variability for critical UI paths.</p>
-          <div class="item-meta"><a href="https://example.com/zero-latency" target="_blank" rel="noopener noreferrer">Read article</a></div>
+          <h4><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5PSVRubElCMjA2bWR4YXc1UnQ2UHd4RENxM3RDaDBSaWdBSDZ6NUlZOVZ4M1RSaFNIbUxSeUt4aEVrTlRHbmJGQlN6VlI0clZtZU1fa19TTml1amk1a0dqUE1EVmhWS0huYmk2b3doY0xqZF8xQlNIRDlIVmE?oc=5" target="_blank" rel="noopener noreferrer">Google’s New AI App Works Without Internet, Keeps Your Data Safe - Indianweb2.com</a></h4>
+          <p>Google’s New AI App Works Without Internet, Keeps Your Data Safe Indianweb2.com</p>
+          <div class="item-meta"><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5PSVRubElCMjA2bWR4YXc1UnQ2UHd4RENxM3RDaDBSaWdBSDZ6NUlZOVZ4M1RSaFNIbUxSeUt4aEVrTlRHbmJGQlN6VlI0clZtZU1fa19TTml1amk1a0dqUE1EVmhWS0huYmk2b3doY0xqZF8xQlNIRDlIVmE?oc=5" target="_blank" rel="noopener noreferrer">Read article</a></div>
         </div>
       </li>
+
       <li>
         <span class="rank">10</span>
         <div class="item-main">
-          <h4><a href="https://example.com/iot-edge" target="_blank" rel="noopener noreferrer">Edge computing for IoT: when the phone becomes the control plane</a></h4>
-          <p>Use cases show phones provisioning models to nearby devices and brokering offline-first automations.</p>
-          <div class="item-meta"><a href="https://example.com/iot-edge" target="_blank" rel="noopener noreferrer">Read article</a></div>
+          <h4><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxPVXd1bTllR2NnMzZMNW1iZ1J5aXhhNG5DRmhyX184YmNRTFBpalRDVWtfRzBacXdtMEdadEZhU19iZ3hxeWlRcFJWdzlocTRqNi11ZWRoV3FXV1lRNmp2VmU2UkJyZXQzR0lGRk4xM1FIYzFLVUNIbW44RHNpNXNXVU9vLThSb0hUVEFIVVlJQkJ3X3ctbFVpTjJn?oc=5" target="_blank" rel="noopener noreferrer">Why ServiceNow (NOW) Still Has an Edge in Agentic AI Despite Investor Concerns - Yahoo Finance</a></h4>
+          <p>Why ServiceNow (NOW) Still Has an Edge in Agentic AI Despite Investor Concerns Yahoo Finance</p>
+          <div class="item-meta"><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxPVXd1bTllR2NnMzZMNW1iZ1J5aXhhNG5DRmhyX184YmNRTFBpalRDVWtfRzBacXdtMEdadEZhU19iZ3hxeWlRcFJWdzlocTRqNi11ZWRoV3FXV1lRNmp2VmU2UkJyZXQzR0lGRk4xM1FIYzFLVUNIbW44RHNpNXNXVU9vLThSb0hUVEFIVVlJQkJ3X3ctbFVpTjJn?oc=5" target="_blank" rel="noopener noreferrer">Read article</a></div>
         </div>
       </li>
     </ol>
