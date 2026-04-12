@@ -1,0 +1,11 @@
+{
+  "name": "edgephone-daily-newsletter",
+  "private": true,
+  "scripts": {
+    "start": "serve . -l 3000",
+    "dev": "serve . -l 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

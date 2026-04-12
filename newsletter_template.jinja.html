@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Daily curated Edge AI &amp; on-device intelligence headlines — powered by EdgePhone." />
+  <title>EdgePhone Daily — Edge AI Headlines</title>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --surface: #121922;
+      --surface-2: #1a2330;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e8eef6;
+      --muted: #9aa8bc;
+      --accent: #3ee0b3;
+      --accent-dim: rgba(62, 224, 179, 0.15);
+      --featured: #5b8cff;
+      --radius: 14px;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+      --max: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(91, 140, 255, 0.12), transparent 55%),
+        radial-gradient(900px 500px at 90% 0%, rgba(62, 224, 179, 0.1), transparent 50%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.25rem 1.25rem 3rem;
+    }
+
+    /* Top promo bar */
+    .promo-bar {
+      background: linear-gradient(90deg, var(--accent-dim), rgba(91, 140, 255, 0.12));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .promo-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .promo-inner strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent);
+      color: #04120d;
+      font-weight: 700;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(62, 224, 179, 0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(62, 224, 179, 0.35);
+      text-decoration: none;
+    }
+
+    header.site {
+      padding: 2rem 0 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      letter-spacing: -0.02em;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border: 1px solid rgba(62, 224, 179, 0.35);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      max-width: 52ch;
+    }
+
+    .meta-row {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    h2.section-title {
+      margin: 2.25rem 0 1rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h2.section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    /* Featured grid */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .featured-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+      }
+    }
+
+    .featured-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .featured-banner {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      background: linear-gradient(135deg, var(--featured), #7c4dff);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.55rem;
+      border-radius: 6px;
+      z-index: 2;
+    }
+
+    .featured-visual {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(145deg, var(--surface-2), #0e141c);
+    }
+
+    .featured-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .featured-visual .fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.08);
+      letter-spacing: -0.05em;
+    }
+
+    .featured-body {
+      padding: 1.1rem 1.15rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .featured-body h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+
+    .featured-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .read-link {
+      margin-top: 0.25rem;
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .read-link:hover {
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    /* Standard list */
+    .article-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .article-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.95rem 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.85rem;
+      align-items: start;
+      transition: border-color 0.15s ease;
+    }
+
+    .article-list li:hover {
+      border-color: rgba(62, 224, 179, 0.25);
+    }
+
+    .rank {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 10px;
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--accent);
+      border: 1px solid var(--border);
+    }
+
+    .item-main h4 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .item-main p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .item-meta {
+      margin-top: 0.45rem;
+      font-size: 0.82rem;
+    }
+
+    .item-meta a {
+      color: var(--featured);
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    .empty-note {
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="promo-bar">
+    <div class="promo-inner">
+      <span><strong>EdgePhone</strong> — AI that runs where your users already are: on the device.</span>
+      <a class="cta" href="https://www.edgephone.ai/" target="_blank" rel="noopener noreferrer">Discover the Future of EdgePhone</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="site">
+      <div class="brand">
+        <h1>EdgePhone Daily</h1>
+        <span class="badge">Edge &amp; On-Device AI</span>
+      </div>
+      <p class="sub">Ten hand-curated headlines on edge AI, on-device inference, privacy-first ML, and phone-first intelligence — refreshed every day.</p>
+      <div class="meta-row">
+        <span class="pill">{{ generated_date }}</span>
+        <span>Promoting <a href="https://www.edgephone.ai/" target="_blank" rel="noopener noreferrer">www.edgephone.ai</a></span>
+      </div>
+    </header>
+
+    <h2 class="section-title">Featured today</h2>
+    {% if featured|length > 0 %}
+    <div class="featured-grid">
+      {% for article in featured %}
+      <article class="featured-card">
+        <span class="featured-banner">Featured</span>
+        <div class="featured-visual">
+          {% if article.image_url %}
+          <img src="{{ article.image_url }}" alt="" loading="lazy" width="640" height="360" />
+          {% else %}
+          <div class="fallback" aria-hidden="true">EP</div>
+          {% endif %}
+        </div>
+        <div class="featured-body">
+          <h3><a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">{{ article.title }}</a></h3>
+          <p>{{ article.snippet }}</p>
+          <a class="read-link" href="{{ article.url }}" target="_blank" rel="noopener noreferrer">Read article →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-note">No featured articles available for this run. Check your data sources or API keys.</p>
+    {% endif %}
+
+    <h2 class="section-title">More headlines</h2>
+    {% if standard|length > 0 %}
+    <ol class="article-list">
+      {% for article in standard %}
+      <li>
+        <span class="rank">{{ loop.index + 2 }}</span>
+        <div class="item-main">
+          <h4><a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">{{ article.title }}</a></h4>
+          <p>{{ article.snippet }}</p>
+          <div class="item-meta"><a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">Read article</a></div>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p class="empty-note">No additional articles to list.</p>
+    {% endif %}
+
+    <footer>
+      <p>Automated curation for promotional use. Headlines link to third-party publishers; EdgePhone is not affiliated unless stated. Built to highlight <a href="https://www.edgephone.ai/" target="_blank" rel="noopener noreferrer">EdgePhone</a> and the shift toward on-device, low-latency AI.</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!--
+  GOOGLE SITES — Inline HTML embed (fallback)
+
+  New Google Sites often strips scripts and may restrict tags. If this breaks, use
+  google-sites-iframe-embed.html instead and host index.html on a static host.
+
+  Insert → Embed → Embed code → paste everything from the next line through the closing </div>.
+-->
+<div id="ep-daily-embed" class="ep-daily-embed">
+<style type="text/css">
+.ep-daily-embed {
+  --ep-bg: #0b0f14;
+  --ep-surface: #121922;
+  --ep-surface-2: #1a2330;
+  --ep-border: rgba(255, 255, 255, 0.08);
+  --ep-text: #e8eef6;
+  --ep-muted: #9aa8bc;
+  --ep-accent: #3ee0b3;
+  --ep-accent-dim: rgba(62, 224, 179, 0.15);
+  --ep-featured: #5b8cff;
+  --ep-radius: 14px;
+  --ep-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --ep-max: 1100px;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(91, 140, 255, 0.12), transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, rgba(62, 224, 179, 0.1), transparent 50%),
+    var(--ep-bg);
+  color: var(--ep-text);
+  line-height: 1.55;
+  text-align: left;
+}
+.ep-daily-embed *, .ep-daily-embed *::before, .ep-daily-embed *::after { box-sizing: border-box; }
+.ep-daily-embed a { color: inherit; text-decoration: none; }
+.ep-daily-embed a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ep-daily-embed .ep-wrap { max-width: var(--ep-max); margin: 0 auto; padding: 1.25rem 1.25rem 3rem; }
+.ep-daily-embed .ep-promo-bar {
+  background: linear-gradient(90deg, var(--ep-accent-dim), rgba(91, 140, 255, 0.12));
+  border-bottom: 1px solid var(--ep-border);
+}
+.ep-daily-embed .ep-promo-inner {
+  max-width: var(--ep-max); margin: 0 auto; padding: 0.65rem 1.25rem;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 0.75rem; font-size: 0.9rem; color: var(--ep-muted);
+}
+.ep-daily-embed .ep-promo-inner strong { color: var(--ep-text); font-weight: 600; }
+.ep-daily-embed .ep-cta {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--ep-accent); color: #04120d; font-weight: 700;
+  padding: 0.55rem 1rem; border-radius: 999px; text-decoration: none; font-size: 0.9rem;
+  box-shadow: 0 8px 24px rgba(62, 224, 179, 0.25);
+}
+.ep-daily-embed .ep-cta:hover { text-decoration: none; transform: translateY(-1px); }
+.ep-daily-embed header.ep-site { padding: 2rem 0 1.25rem; }
+.ep-daily-embed .ep-brand { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1rem; margin-bottom: 0.5rem; }
+.ep-daily-embed .ep-brand h1 { margin: 0; font-size: clamp(1.75rem, 4vw, 2.25rem); letter-spacing: -0.02em; }
+.ep-daily-embed .ep-badge {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ep-accent);
+  border: 1px solid rgba(62, 224, 179, 0.35); padding: 0.2rem 0.55rem; border-radius: 999px; font-weight: 700;
+}
+.ep-daily-embed .ep-sub { margin: 0; color: var(--ep-muted); max-width: 52ch; }
+.ep-daily-embed .ep-meta-row {
+  margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+  color: var(--ep-muted); font-size: 0.9rem;
+}
+.ep-daily-embed .ep-pill {
+  background: var(--ep-surface); border: 1px solid var(--ep-border);
+  padding: 0.25rem 0.65rem; border-radius: 999px;
+}
+.ep-daily-embed h2.ep-section-title {
+  margin: 2.25rem 0 1rem; font-size: 1.1rem; letter-spacing: 0.02em; text-transform: uppercase;
+  color: var(--ep-muted); display: flex; align-items: center; gap: 0.5rem;
+}
+.ep-daily-embed h2.ep-section-title::after {
+  content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--ep-border), transparent);
+}
+.ep-daily-embed .ep-featured-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 768px) {
+  .ep-daily-embed .ep-featured-grid { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+}
+.ep-daily-embed .ep-featured-card {
+  position: relative; background: var(--ep-surface); border: 1px solid var(--ep-border);
+  border-radius: var(--ep-radius); overflow: hidden; box-shadow: var(--ep-shadow);
+  display: flex; flex-direction: column; min-height: 100%;
+}
+.ep-daily-embed .ep-featured-banner {
+  position: absolute; top: 0.85rem; left: 0.85rem;
+  background: linear-gradient(135deg, var(--ep-featured), #7c4dff); color: #fff;
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.3rem 0.55rem; border-radius: 6px; z-index: 2;
+}
+.ep-daily-embed .ep-featured-visual {
+  position: relative; aspect-ratio: 16 / 9; background: linear-gradient(145deg, var(--ep-surface-2), #0e141c);
+}
+.ep-daily-embed .ep-featured-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ep-daily-embed .ep-featured-body {
+  padding: 1.1rem 1.15rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1;
+}
+.ep-daily-embed .ep-featured-body h3 { margin: 0; font-size: 1.15rem; line-height: 1.35; }
+.ep-daily-embed .ep-featured-body p { margin: 0; color: var(--ep-muted); font-size: 0.95rem; flex: 1; }
+.ep-daily-embed .ep-read-link { margin-top: 0.25rem; font-weight: 600; color: var(--ep-accent); font-size: 0.9rem; }
+.ep-daily-embed .ep-read-link:hover { text-decoration: none; opacity: 0.9; }
+.ep-daily-embed ol.ep-article-list {
+  list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.65rem;
+}
+.ep-daily-embed ol.ep-article-list li {
+  background: var(--ep-surface); border: 1px solid var(--ep-border); border-radius: 12px;
+  padding: 0.95rem 1rem; display: grid; grid-template-columns: auto 1fr; gap: 0.85rem; align-items: start;
+}
+.ep-daily-embed .ep-rank {
+  width: 2rem; height: 2rem; border-radius: 10px; background: var(--ep-surface-2);
+  display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem;
+  color: var(--ep-accent); border: 1px solid var(--ep-border);
+}
+.ep-daily-embed .ep-item-main h4 { margin: 0 0 0.35rem; font-size: 1rem; line-height: 1.35; }
+.ep-daily-embed .ep-item-main p { margin: 0; color: var(--ep-muted); font-size: 0.9rem; }
+.ep-daily-embed .ep-item-meta { margin-top: 0.45rem; font-size: 0.82rem; }
+.ep-daily-embed .ep-item-meta a { color: var(--ep-featured); font-weight: 600; }
+.ep-daily-embed footer.ep-foot {
+  margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--ep-border);
+  color: var(--ep-muted); font-size: 0.85rem;
+}
+.ep-daily-embed footer.ep-foot a { color: var(--ep-accent); }
+</style>
+
+  <div class="ep-promo-bar">
+    <div class="ep-promo-inner">
+      <span><strong>EdgePhone</strong> — AI that runs where your users already are: on the device.</span>
+      <a class="ep-cta" href="https://www.edgephone.ai/" target="_blank" rel="noopener noreferrer">Discover the Future of EdgePhone</a>
+    </div>
+  </div>
+
+  <div class="ep-wrap">
+    <header class="ep-site">
+      <div class="ep-brand">
+        <h1>EdgePhone Daily</h1>
+        <span class="ep-badge">Edge &amp; On-Device AI</span>
+      </div>
+      <p class="ep-sub">Ten hand-curated headlines on edge AI, on-device inference, privacy-first ML, and phone-first intelligence — refreshed every day.</p>
+      <div class="ep-meta-row">
+        <span class="ep-pill">Daily edition</span>
+        <span>Promoting <a href="https://www.edgephone.ai/" target="_blank" rel="noopener noreferrer">www.edgephone.ai</a></span>
+      </div>
+    </header>
+
+    <h2 class="ep-section-title">Featured today</h2>
+    <div class="ep-featured-grid">
+      <article class="ep-featured-card">
+        <span class="ep-featured-banner">Featured</span>
+        <div class="ep-featured-visual">
+          <img src="https://picsum.photos/seed/edgephone1/640/360" alt="" width="640" height="360" />
+        </div>
+        <div class="ep-featured-body">
+          <h3><a href="https://example.com/edge-ai-latency" target="_blank" rel="noopener noreferrer">Phone-first AI slashes latency with on-device inference for assistants</a></h3>
+          <p>Hardware makers highlight local inference and zero round-trip designs that keep voice and vision on the handset—reducing jitter and improving privacy-by-default behavior.</p>
+          <a class="ep-read-link" href="https://example.com/edge-ai-latency" target="_blank" rel="noopener noreferrer">Read article →</a>
+        </div>
+      </article>
+      <article class="ep-featured-card">
+        <span class="ep-featured-banner">Featured</span>
+        <div class="ep-featured-visual">
+          <img src="https://picsum.photos/seed/edgephone2/640/360" alt="" width="640" height="360" />
+        </div>
+        <div class="ep-featured-body">
+          <h3><a href="https://example.com/edge-ml-battery" target="_blank" rel="noopener noreferrer">Edge ML shifts toward battery-efficient models on mobile SoCs</a></h3>
+          <p>New toolchains target lightweight networks, structured pruning, and INT8 quantization so sensor fusion and on-device computer vision stay within thermal budgets.</p>
+          <a class="ep-read-link" href="https://example.com/edge-ml-battery" target="_blank" rel="noopener noreferrer">Read article →</a>
+        </div>
+      </article>
+    </div>
+
+    <h2 class="ep-section-title">More headlines</h2>
+    <ol class="ep-article-list">
+      <li>
+        <span class="ep-rank">3</span>
+        <div class="ep-item-main">
+          <h4><a href="https://example.com/offline-voice" target="_blank" rel="noopener noreferrer">Offline voice processing gains traction where connectivity is sparse</a></h4>
+          <p>Packaged models and secure mobile AI stacks let field teams run dictation and commands without cloud round-trips.</p>
+          <div class="ep-item-meta"><a href="https://example.com/offline-voice" target="_blank" rel="noopener noreferrer">Read article</a></div>
+        </div>
+      </li>
+      <li>
+        <span class="ep-rank">4</span>
+        <div class="ep-item-main">
+          <h4><a href="https://example.com/data-minimization" target="_blank" rel="noopener noreferrer">Data minimization AI: what ships off-device—and what never leaves the phone</a></h4>
+          <p>Product teams adopt selective upload policies paired with on-device embeddings to meet tightening privacy expectations.</p>
+          <div class="ep-item-meta"><a href="https://example.com/data-minimization" target="_blank" rel="noopener noreferrer">Read article</a></div>
+        </div>
+      </li>
+      <li>
+        <span class="ep-rank">5</span>
+        <div class="ep-item-main">
+          <h4><a href="https://example.com/mobile-apis" target="_blank" rel="noopener noreferrer">Mobile AI APIs mature for edge computing on IoT gateways</a></h4>
+          <p>Vendors document pipelines from phone to gateway, emphasizing local inference for cameras and industrial sensors.</p>
+          <div class="ep-item-meta"><a href="https://example.com/mobile-apis" target="_blank" rel="noopener noreferrer">Read article</a></div>
+        </div>
+      </li>
+      <li>
+        <span class="ep-rank">6</span>
+        <div class="ep-item-main">
+          <h4><a href="https://example.com/onnx-mobile" target="_blank" rel="noopener noreferrer">Cross-platform runtimes speed deployment of lightweight models</a></h4>
+          <p>Engineers report faster iteration when the same ONNX graph targets phone NPUs and embedded accelerators alike.</p>
+          <div class="ep-item-meta"><a href="https://example.com/onnx-mobile" target="_blank" rel="noopener noreferrer">Read article</a></div>
+        </div>
+      </li>
+      <li>
+        <span class="ep-rank">7</span>
+        <div class="ep-item-main">
+          <h4><a href="https://example.com/secure-edge" target="_blank" rel="noopener noreferrer">Secure mobile AI: trusted execution and key isolation for on-device models</a></h4>
+          <p>Updated guidance covers model encryption at rest, attestation, and side-channel hardening for consumer devices.</p>
+          <div class="ep-item-meta"><a href="https://example.com/secure-edge" target="_blank" rel="noopener noreferrer">Read article</a></div>
+        </div>
+      </li>
+      <li>
+        <span class="ep-rank">8</span>
+        <div class="ep-item-main">
+          <h4><a href="https://example.com/sensor-fusion" target="_blank" rel="noopener noreferrer">Sensor fusion at the edge: pairing IMU, mic, and camera on low power</a></h4>
+          <p>Researchers demonstrate cooperative filtering that keeps most fusion local while syncing sparse summaries upstream.</p>
+          <div class="ep-item-meta"><a href="https://example.com/sensor-fusion" target="_blank" rel="noopener noreferrer">Read article</a></div>
+        </div>
+      </li>
+      <li>
+        <span class="ep-rank">9</span>
+        <div class="ep-item-main">
+          <h4><a href="https://example.com/zero-latency" target="_blank" rel="noopener noreferrer">“Zero-latency” UX patterns rely on predictive prefetch—not magic</a></h4>
+          <p>Design notes explain how on-device caches and speculative inference hide network variability for critical UI paths.</p>
+          <div class="ep-item-meta"><a href="https://example.com/zero-latency" target="_blank" rel="noopener noreferrer">Read article</a></div>
+        </div>
+      </li>
+      <li>
+        <span class="ep-rank">10</span>
+        <div class="ep-item-main">
+          <h4><a href="https://example.com/iot-edge" target="_blank" rel="noopener noreferrer">Edge computing for IoT: when the phone becomes the control plane</a></h4>
+          <p>Use cases show phones provisioning models to nearby devices and brokering offline-first automations.</p>
+          <div class="ep-item-meta"><a href="https://example.com/iot-edge" target="_blank" rel="noopener noreferrer">Read article</a></div>
+        </div>
+      </li>
+    </ol>
+
+    <footer class="ep-foot">
+      <p>Automated curation for promotional use. Headlines link to third-party publishers; EdgePhone is not affiliated unless stated. Built to highlight <a href="https://www.edgephone.ai/" target="_blank" rel="noopener noreferrer">EdgePhone</a> and the shift toward on-device, low-latency AI.</p>
+    </footer>
+  </div>
+</div>
