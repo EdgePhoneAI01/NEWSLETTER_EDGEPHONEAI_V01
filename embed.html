@@ -1,0 +1,107 @@
+<!--
+  GOOGLE SITES — Responsive iFrame Embed Code
+  ============================================
+  Instructions:
+    1. In Google Sites, click Insert → Embed → Embed code
+    2. Paste ONLY the <div> block below (from <!-- EMBED START --> to <!-- EMBED END -->)
+    3. Click Insert
+
+  How it works:
+    - The iframe loads the hosted newsletter from GitHub Pages.
+    - The newsletter page sends its scrollHeight to this parent via window.postMessage
+      using the message format: { type: 'newsletter-resize', height: <number> }
+    - The listener below receives that message, validates it, and resizes the iframe
+      so no content is clipped and no scrollbars appear inside the frame.
+    - CSS media queries set sensible fallback min-heights for each device class while
+      the postMessage height is being calculated on first load.
+
+  Hosted newsletter URL:
+    https://edgephoneai01.github.io/NEWSLETTER_EDGEPHONEAI_V01/index.html
+-->
+
+<!-- EMBED START — paste everything below this line into Google Sites -->
+<div style="
+  background: #0b0f14;
+  width: 100%;
+  overflow-x: hidden;
+  line-height: 0;
+">
+  <style>
+    /* Wrapper keeps the iframe flush and hides any horizontal overflow */
+    #ep-embed-wrapper {
+      width: 100%;
+      overflow: hidden;
+      background: #0b0f14;
+      line-height: 0;
+    }
+
+    #ep-newsletter-frame {
+      display: block;
+      width: 100%;
+      border: none;
+      overflow: hidden;
+      background: #0b0f14;
+      /* Smooth height transitions as postMessage updates arrive */
+      transition: height 0.3s ease;
+      /* Mobile-first fallback min-height (portrait phone) */
+      min-height: 2800px;
+      height: 2800px;
+    }
+
+    /* Tablet: 768px – 1023px */
+    @media (min-width: 768px) {
+      #ep-newsletter-frame {
+        min-height: 2400px;
+        height: 2400px;
+      }
+    }
+
+    /* Desktop: 1024px and up */
+    @media (min-width: 1024px) {
+      #ep-newsletter-frame {
+        min-height: 2200px;
+        height: 2200px;
+      }
+    }
+  </style>
+
+  <div id="ep-embed-wrapper">
+    <iframe
+      id="ep-newsletter-frame"
+      src="https://edgephoneai01.github.io/NEWSLETTER_EDGEPHONEAI_V01/index.html"
+      title="EdgePhone Daily Newsletter"
+      scrolling="no"
+      aria-label="EdgePhone Daily Newsletter — Edge &amp; On-Device AI headlines"
+    ></iframe>
+  </div>
+
+  <script>
+    (function () {
+      var frame = document.getElementById('ep-newsletter-frame');
+
+      // The newsletter page posts { type: 'newsletter-resize', height: <number> }
+      // whenever its content height changes (load, resize, image load).
+      // We validate the origin to accept only the expected GitHub Pages host.
+      var ALLOWED_ORIGIN = 'https://edgephoneai01.github.io';
+
+      window.addEventListener('message', function (event) {
+        // Security: ignore messages from unexpected origins
+        if (event.origin !== ALLOWED_ORIGIN) return;
+
+        var data = event.data;
+        if (
+          data &&
+          data.type === 'newsletter-resize' &&
+          typeof data.height === 'number' &&
+          data.height > 0
+        ) {
+          // Add a small buffer so the last line of content is never clipped
+          var newHeight = Math.ceil(data.height) + 32;
+          frame.style.height = newHeight + 'px';
+          frame.style.minHeight = newHeight + 'px';
+        }
+      });
+    })();
+  </script>
+</div>
+<!-- EMBED END -->
