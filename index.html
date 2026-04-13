@@ -512,5 +512,34 @@
       });
     })();
   </script>
+  <script>
+    (function () {
+      function msUntilNext0600UTC(now) {
+        var d = new Date(now.getTime());
+        d.setUTCHours(6, 0, 0, 0);
+        if (d.getTime() <= now.getTime()) d.setUTCDate(d.getUTCDate() + 1);
+        return d.getTime() - now.getTime();
+      }
+
+      function refreshWithBust() {
+        try {
+          var url = new URL(window.location.href);
+          url.searchParams.set("_ts", String(Date.now()));
+          window.location.replace(url.toString());
+        } catch (e) {
+          window.location.reload();
+        }
+      }
+
+      function schedule() {
+        var delay = msUntilNext0600UTC(new Date());
+        window.setTimeout(function () {
+          refreshWithBust();
+        }, delay);
+      }
+
+      schedule();
+    })();
+  </script>
 </body>
 </html>
