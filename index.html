@@ -368,7 +368,7 @@
       <p class="sub">Ten hand-curated headlines on edge AI, on-device inference, privacy-first ML, and phone-first intelligence — refreshed every day.</p>
       <div class="meta-row">
         <span class="pill"><time datetime="2026-04-14">2026-04-14</time> · Daily edition</span>
-        <span id="next-update-pill" class="pill">Next refresh: 06:40 UTC</span>
+        <span id="next-update-pill" class="pill">Next refresh: Apr 15, 2026 · 06:40 UTC</span>
         <span>Promoting <a href="https://www.edgephone.ai/" target="_blank" rel="noopener noreferrer">www.edgephone.ai</a></span>
       </div>
     </header>
@@ -542,7 +542,9 @@
           dateStyle: "medium",
           timeStyle: "short"
         });
-        pill.textContent = "Next refresh: " + local + " (06:40 UTC)";
+        var hh = String(TARGET_HOUR_UTC).padStart(2, "0");
+        var mm = String(TARGET_MINUTE_UTC).padStart(2, "0");
+        pill.textContent = "Next refresh: " + local + " (" + hh + ":" + mm + " UTC)";
       }
 
       var now = new Date();

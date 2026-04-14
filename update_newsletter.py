@@ -12,7 +12,7 @@ Requires:
 import os
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from urllib.parse import urlparse
 
 try:
@@ -176,7 +176,14 @@ def _article_item(article: dict, rank: int) -> str:
 
 def update_html(articles: list) -> str:
     """Patch index.html in-place and return the ISO date string used."""
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    now_utc = datetime.now(timezone.utc)
+    today = now_utc.strftime("%Y-%m-%d")
+
+    # Compute next scheduled refresh: tomorrow at 06:40 UTC
+    next_refresh_utc = (now_utc + timedelta(days=1)).replace(
+        hour=6, minute=40, second=0, microsecond=0
+    )
+    next_refresh_str = next_refresh_utc.strftime("%b %-d, %Y · %H:%M UTC")
 
     with open(HTML_FILE, encoding="utf-8") as fh:
         html = fh.read()
@@ -190,7 +197,14 @@ def update_html(articles: list) -> str:
         html,
     )
 
-    # 2. Replace featured-grid content (articles 1 & 2)
+    # 2. Update the next-refresh pill (static server-side text; JS enriches with local time)
+    html = re.sub(
+        r'(<span id="next-update-pill" class="pill">Next refresh: )[^<]*(</span>)',
+        lambda m: m.group(1) + next_refresh_str + m.group(2),
+        html,
+    )
+
+    # 3. Replace featured-grid content (articles 1 & 2)
     #    Anchor the end of the match on the closing </div> that is immediately
     #    followed by a blank line and the "More headlines" <h2>.  The non-greedy
     #    .*? + DOTALL ensures we match the outermost featured-grid </div>.
@@ -208,7 +222,7 @@ def update_html(articles: list) -> str:
         flags=re.DOTALL,
     )
 
-    # 3. Replace article-list content (articles 3–10)
+    # 4. Replace article-list content (articles 3–10)
     #    The non-greedy .*? matches the first </ol> (no nested <ol> in this file).
     items_block = "\n\n".join(
         _article_item(a, i + 3) for i, a in enumerate(articles[2:10])
@@ -225,7 +239,7 @@ def update_html(articles: list) -> str:
     else:
         with open(HTML_FILE, "w", encoding="utf-8") as fh:
             fh.write(html)
-        print(f"index.html updated for {today}.")
+        print(f"index.html updated for {today} (next refresh: {next_refresh_str}).")
 
     return today
 

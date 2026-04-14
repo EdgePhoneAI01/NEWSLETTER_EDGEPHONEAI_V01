@@ -2,8 +2,8 @@ name: Update Newsletter
 
 on:
   schedule:
-    # Runs every day at 06:00 GMT
-    - cron: '0 6 * * *'
+    # Runs every day at 06:40 UTC
+    - cron: '40 6 * * *'
   # Allow manual triggering from the GitHub Actions tab
   workflow_dispatch:
 
