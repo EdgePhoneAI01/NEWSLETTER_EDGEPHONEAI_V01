@@ -1,0 +1,42 @@
+name: Update Newsletter
+
+on:
+  schedule:
+    # Runs every day at 06:00 GMT
+    - cron: '0 6 * * *'
+  # Allow manual triggering from the GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run newsletter update script
+        run: python update_newsletter.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --staged --quiet; then
+            echo "No changes to commit – newsletter is already up to date."
+          else
+            DATE=$(date -u +%Y-%m-%d)
+            git commit -m "Auto-update newsletter - ${DATE}"
+            git push
+          fi
