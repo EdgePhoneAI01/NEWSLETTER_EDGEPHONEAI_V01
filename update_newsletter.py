@@ -12,6 +12,7 @@ Requires:
 import os
 import re
 import sys
+import time
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 
@@ -81,6 +82,31 @@ def _clean_summary(raw: str, title: str) -> str:
 # ---------------------------------------------------------------------------
 
 
+_RETRY_ATTEMPTS = 3
+_RETRY_DELAY_S = 5
+
+
+def _fetch_feed(url: str) -> feedparser.FeedParserDict:
+    """Fetch a single RSS feed with up to _RETRY_ATTEMPTS retries."""
+    for attempt in range(1, _RETRY_ATTEMPTS + 1):
+        try:
+            feed = feedparser.parse(url)
+            # feedparser returns a bozo flag for malformed feeds; treat HTTP
+            # errors (status >= 400) as transient failures worth retrying.
+            if getattr(feed, "status", 200) >= 400:
+                raise OSError(f"HTTP {feed.status}")
+            return feed
+        except Exception as exc:
+            if attempt < _RETRY_ATTEMPTS:
+                print(
+                    f"    attempt {attempt} failed ({exc}); retrying in {_RETRY_DELAY_S}s…",
+                    file=sys.stderr,
+                )
+                time.sleep(_RETRY_DELAY_S)
+            else:
+                raise
+
+
 def fetch_articles(want: int = 12) -> list:
     """Fetch up to *want* unique Edge AI articles from Google News RSS feeds."""
     seen: set = set()
@@ -91,7 +117,7 @@ def fetch_articles(want: int = 12) -> list:
             break
         url = RSS_TEMPLATE.format(query=query)
         try:
-            feed = feedparser.parse(url)
+            feed = _fetch_feed(url)
         except Exception as exc:
             print(f"  WARNING: feed error for '{query}': {exc}", file=sys.stderr)
             continue
