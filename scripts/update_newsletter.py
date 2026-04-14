@@ -170,7 +170,6 @@ def update_html(articles, date_str):
 
     featured_pattern = re.compile(
         r'<div class="featured-grid">[\s\S]*?</article>\s*</div>',
-        re.DOTALL,
     )
     if not featured_pattern.search(content):
         print("WARNING: Could not locate featured-grid section; skipping replacement.")
@@ -189,7 +188,6 @@ def update_html(articles, date_str):
 
     list_pattern = re.compile(
         r'<ol class="article-list">[\s\S]*?</ol>',
-        re.DOTALL,
     )
     if not list_pattern.search(content):
         print("WARNING: Could not locate article-list section; skipping replacement.")

@@ -24,7 +24,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install feedparser requests
+        run: pip install feedparser
 
       - name: Fetch headlines and update newsletter
         run: python scripts/update_newsletter.py
