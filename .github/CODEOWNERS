@@ -1,0 +1,6 @@
+# Code owners for this repository.
+# These users are required reviewers for any pull request that modifies
+# the files they own.
+
+# Global owner – required reviewer for every pull request
+* @EdgePhoneAI01
