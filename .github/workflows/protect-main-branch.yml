@@ -1,0 +1,42 @@
+name: Protect Main Branch
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  protect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      administration: write
+
+    steps:
+      - name: Apply branch protection rules to main
+        uses: actions/github-script@v7
+        with:
+          # Use ADMIN_TOKEN (PAT with repo admin rights) when available;
+          # fall back to the built-in GITHUB_TOKEN for repositories where
+          # the Actions token has been granted administration: write.
+          github-token: ${{ secrets.ADMIN_TOKEN || secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.repos.updateBranchProtection({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: 'main',
+              required_status_checks: null,
+              enforce_admins: true,
+              required_pull_request_reviews: {
+                dismiss_stale_reviews: true,
+                require_code_owner_reviews: true,
+                required_approving_review_count: 1
+              },
+              restrictions: null,
+              allow_force_pushes: false,
+              allow_deletions: false,
+              block_creations: false,
+              required_conversation_resolution: true
+            });
+            console.log('Branch protection applied to main successfully.');
