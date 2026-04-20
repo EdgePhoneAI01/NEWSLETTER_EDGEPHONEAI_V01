@@ -10,13 +10,17 @@ jobs:
   protect:
     runs-on: ubuntu-latest
     permissions:
+      contents: write
       administration: write
 
     steps:
       - name: Apply branch protection rules to main
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Use ADMIN_TOKEN (PAT with repo admin rights) when available;
+          # fall back to the built-in GITHUB_TOKEN for repositories where
+          # the Actions token has been granted administration: write.
+          github-token: ${{ secrets.ADMIN_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
             await github.rest.repos.updateBranchProtection({
               owner: context.repo.owner,
