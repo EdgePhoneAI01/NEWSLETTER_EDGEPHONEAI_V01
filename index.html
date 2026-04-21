@@ -368,7 +368,6 @@
       <p class="sub">Ten hand-curated headlines on edge AI, on-device inference, privacy-first ML, and phone-first intelligence — refreshed every day.</p>
       <div class="meta-row">
         <span class="pill"><time datetime="2026-04-21">2026-04-21</time> · Daily edition</span>
-        <span id="next-update-pill" class="pill">Next refresh: 06:40 UTC</span>
         <span>Promoting <a href="https://www.edgephone.ai/" target="_blank" rel="noopener noreferrer">www.edgephone.ai</a></span>
       </div>
     </header>
@@ -510,53 +509,6 @@
       [100, 400, 1200, 3000].forEach(function (ms) {
         setTimeout(measureAndPost, ms);
       });
-    })();
-  </script>
-  <script>
-    (function () {
-      var TARGET_HOUR_UTC = 6;
-      var TARGET_MINUTE_UTC = 40;
-      var DAY_MS = 24 * 60 * 60 * 1000;
-      var pill = document.getElementById("next-update-pill");
-
-      function nextRunDateUtc(now) {
-        var next = new Date(Date.UTC(
-          now.getUTCFullYear(),
-          now.getUTCMonth(),
-          now.getUTCDate(),
-          TARGET_HOUR_UTC,
-          TARGET_MINUTE_UTC,
-          0,
-          0
-        ));
-        if (next <= now) {
-          next = new Date(next.getTime() + DAY_MS);
-        }
-        return next;
-      }
-
-      function updateLabel(next) {
-        if (!pill) return;
-        var local = next.toLocaleString(undefined, {
-          dateStyle: "medium",
-          timeStyle: "short"
-        });
-        pill.textContent = "Next refresh: " + local + " (06:40 UTC)";
-      }
-
-      var now = new Date();
-      var next = nextRunDateUtc(now);
-      updateLabel(next);
-
-      var delay = next.getTime() - now.getTime();
-      setTimeout(function () {
-        location.reload();
-      }, Math.max(delay, 1000));
-
-      setInterval(function () {
-        next = nextRunDateUtc(new Date());
-        updateLabel(next);
-      }, 60 * 1000);
     })();
   </script>
 </body>
