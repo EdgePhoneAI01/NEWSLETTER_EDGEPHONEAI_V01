@@ -1,6 +1,9 @@
 name: Update Newsletter
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # Runs every day at 06:00 GMT
     - cron: '0 6 * * *'
