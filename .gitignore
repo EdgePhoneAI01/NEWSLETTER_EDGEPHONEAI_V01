@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
 *.pyo
+
+# Environment / secrets files – never commit API keys
+.env
+.env.*
+*.env
