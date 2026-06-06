@@ -79,10 +79,11 @@
     (function () {
       var frame = document.getElementById('ep-newsletter-frame');
 
-      // The newsletter page posts { type: 'newsletter-resize', height: <number> }
-      // whenever its content height changes (load, resize, image load).
+      // The newsletter page posts { source: 'edgephone-newsletter-resize', type: 'newsletter-resize', height: <number> }
+      // whenever its content height changes (load, resize, ResizeObserver, font load, staggered timeouts).
       // We validate the origin to accept only the expected GitHub Pages host.
       var ALLOWED_ORIGIN = 'https://edgephoneai01.github.io';
+      var TOKEN = 'edgephone-newsletter-resize';
 
       window.addEventListener('message', function (event) {
         // Security: ignore messages from unexpected origins
@@ -91,7 +92,7 @@
         var data = event.data;
         if (
           data &&
-          data.type === 'newsletter-resize' &&
+          (data.source === TOKEN || data.type === 'newsletter-resize') &&
           typeof data.height === 'number' &&
           data.height > 0
         ) {
