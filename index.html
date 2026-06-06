@@ -492,7 +492,7 @@
           );
           if (h < 320) return;
           try {
-            window.parent.postMessage({ source: TOKEN, height: h }, "*");
+            window.parent.postMessage({ source: TOKEN, type: "newsletter-resize", height: h }, "*");
           } catch (e) {}
         });
       }
