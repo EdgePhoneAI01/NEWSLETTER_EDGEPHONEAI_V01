@@ -1,44 +1,50 @@
 name: Update Newsletter
 
 on:
+  push:
+    branches:
+      - main
   schedule:
-    # Run daily at 06:00 UTC
-    - cron: "0 6 * * *"
-  # Allow manual triggering for testing
+    # Runs every day at 06:00 GMT
+    - cron: '0 6 * * *'
+  # Allow manual triggering from the GitHub Actions tab
   workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install feedparser
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Fetch headlines and update newsletter
-        run: python scripts/update_newsletter.py
+      - name: Run newsletter update script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python update_newsletter.py
 
       - name: Commit and push changes
         run: |
-          DATE=$(date -u +%Y-%m-%d)
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
-          # Only commit if index.html was actually changed
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
+          if git diff --staged --quiet; then
+            echo "No changes to commit – newsletter is already up to date."
           else
-            git commit -m "Update newsletter - $DATE"
+            DATE=$(date -u +%Y-%m-%d)
+            git commit -m "Auto-update newsletter - ${DATE}"
             git push
           fi
