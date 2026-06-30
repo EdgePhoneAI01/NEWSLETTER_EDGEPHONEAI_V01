@@ -267,10 +267,11 @@ def main() -> None:
 
     if len(articles) < 3:
         print(
-            f"ERROR: Only {len(articles)} article(s) fetched (minimum 3 required). Aborting.",
-            file=sys.stderr,
+            f"WARNING: Only {len(articles)} article(s) fetched (minimum 3 required). "
+            "Keeping existing index.html unchanged.",
+            file=sys.stderr
         )
-        sys.exit(1)
+        return
 
     print(f"Fetched {len(articles)} articles:")
     for i, a in enumerate(articles, 1):
